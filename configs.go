@@ -559,6 +559,8 @@ type VideoConfig struct {
 	Duration          int
 	Caption           string
 	ParseMode         string
+	Width             int
+	Height            int
 	CaptionEntities   []MessageEntity
 	SupportsStreaming bool
 }
@@ -572,6 +574,8 @@ func (config VideoConfig) params() (Params, error) {
 	params.AddNonZero("duration", config.Duration)
 	params.AddNonEmpty("caption", config.Caption)
 	params.AddNonEmpty("parse_mode", config.ParseMode)
+	params.AddNonZero("width", config.Width)
+	params.AddNonZero("height", config.Height)
 	params.AddBool("supports_streaming", config.SupportsStreaming)
 	err = params.AddInterface("caption_entities", config.CaptionEntities)
 
